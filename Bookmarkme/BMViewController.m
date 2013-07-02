@@ -7,6 +7,7 @@
 //
 
 #import "BMViewController.h"
+#import "AFJSONRequestOperation.h"
 
 @interface BMViewController ()
 
@@ -26,6 +27,17 @@
     
     [webView loadRequest:request];
     [addressBar setText:address];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        //here's a directory of JSON we got from the URL above
+        NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [JSON valueForKeyPath:@"origin"],
+                              @"where", nil];
+        [self persist:info];
+        NSLog(@"%@", [self populate]);
+    } failure:nil];
+    
+    [operation start];
+
     
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -39,6 +51,7 @@
      style: UIBarButtonItemStylePlain
      target:self action:@selector(switchToBookmarksListView:)];
     self.navigationItem.rightBarButtonItem = optionsButton;
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:.094 green:.176 blue:.874 alpha:1]];
 }
 -(IBAction)switchToBookmarksListView:(id)sender
 {
@@ -78,6 +91,43 @@
     }
     return YES;
 }
+-(NSArray*)populate
+{
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"data"]];
+    NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    
+    NSError *error;
+    
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+    [fileHandler closeFile];
+    
+    return jsonArray;
+}
+
+/*
+ This method takes a dictionary of values and writes them to a file as parsable JSON text
+ */
+-(BOOL)persist:(NSDictionary*)info
+{
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"data"]];
+    NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    //build an info object and convert to json
+    
+    //convert object to data
+    NSError* error;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info
+                                                       options:NSJSONWritingPrettyPrinted error:&error];
+    [jsonData writeToFile:path options:NSDataWritingAtomic error:&error];
+    [fileHandler closeFile];
+    return true;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
