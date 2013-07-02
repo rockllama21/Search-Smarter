@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F97C49B17821AAD00B27269 /* searchsmarter57.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F97C49A17821AAD00B27269 /* searchsmarter57.png */; };
+		3F97C49D17821AC000B27269 /* searchsmarter114.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F97C49C17821AC000B27269 /* searchsmarter114.png */; };
+		3F97C4A117821EA000B27269 /* BookmarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F97C49F17821EA000B27269 /* BookmarksViewController.m */; };
+		3F97C4A217821EA000B27269 /* BookmarksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F97C4A017821EA000B27269 /* BookmarksViewController.xib */; };
+		3FD37301178314E700692BB4 /* SS114.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD37300178314E700692BB4 /* SS114.png */; };
+		3FD37303178314F200692BB4 /* SS57.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD37302178314F200692BB4 /* SS57.png */; };
 		3FFB32C81781D0F50017B8C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFB32C71781D0F50017B8C0 /* UIKit.framework */; };
 		3FFB32CA1781D0F50017B8C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFB32C91781D0F50017B8C0 /* Foundation.framework */; };
 		3FFB32CC1781D0F50017B8C0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFB32CB1781D0F50017B8C0 /* CoreGraphics.framework */; };
@@ -16,12 +22,18 @@
 		3FFB32DA1781D0F50017B8C0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB32D91781D0F50017B8C0 /* Default.png */; };
 		3FFB32DC1781D0F50017B8C0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB32DB1781D0F50017B8C0 /* Default@2x.png */; };
 		3FFB32DE1781D0F50017B8C0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB32DD1781D0F50017B8C0 /* Default-568h@2x.png */; };
-		3FFB32E11781D0F50017B8C0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB32E01781D0F50017B8C0 /* ViewController.m */; };
-		3FFB32E41781D0F50017B8C0 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB32E21781D0F50017B8C0 /* ViewController_iPhone.xib */; };
-		3FFB32E71781D0F50017B8C0 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB32E51781D0F50017B8C0 /* ViewController_iPad.xib */; };
+		3FFB32E11781D0F50017B8C0 /* BMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB32E01781D0F50017B8C0 /* BMViewController.m */; };
+		3FFB32E41781D0F50017B8C0 /* BMViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB32E21781D0F50017B8C0 /* BMViewController_iPhone.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F97C49A17821AAD00B27269 /* searchsmarter57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchsmarter57.png; path = ../../../Desktop/searchsmarter57.png; sourceTree = "<group>"; };
+		3F97C49C17821AC000B27269 /* searchsmarter114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = searchsmarter114.png; path = ../../../Desktop/searchsmarter114.png; sourceTree = "<group>"; };
+		3F97C49E17821EA000B27269 /* BookmarksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarksViewController.h; sourceTree = "<group>"; };
+		3F97C49F17821EA000B27269 /* BookmarksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarksViewController.m; sourceTree = "<group>"; };
+		3F97C4A017821EA000B27269 /* BookmarksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
+		3FD37300178314E700692BB4 /* SS114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SS114.png; path = ../SS114.png; sourceTree = "<group>"; };
+		3FD37302178314F200692BB4 /* SS57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SS57.png; path = ../SS57.png; sourceTree = "<group>"; };
 		3FFB32C41781D0F50017B8C0 /* Bookmarkme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookmarkme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FFB32C71781D0F50017B8C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3FFB32C91781D0F50017B8C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -35,10 +47,9 @@
 		3FFB32D91781D0F50017B8C0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3FFB32DB1781D0F50017B8C0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3FFB32DD1781D0F50017B8C0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		3FFB32DF1781D0F50017B8C0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3FFB32E01781D0F50017B8C0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		3FFB32E31781D0F50017B8C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		3FFB32E61781D0F50017B8C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		3FFB32DF1781D0F50017B8C0 /* BMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMViewController.h; sourceTree = "<group>"; };
+		3FFB32E01781D0F50017B8C0 /* BMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMViewController.m; sourceTree = "<group>"; };
+		3FFB32E31781D0F50017B8C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BMViewController_iPhone.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +66,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F009BDC17820245003B15B4 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				3F97C49E17821EA000B27269 /* BookmarksViewController.h */,
+				3F97C49F17821EA000B27269 /* BookmarksViewController.m */,
+				3F97C4A017821EA000B27269 /* BookmarksViewController.xib */,
+			);
+			name = TableView;
+			path = Bookmarkme;
+			sourceTree = "<group>";
+		};
 		3FFB32BB1781D0F50017B8C0 = {
 			isa = PBXGroup;
 			children = (
+				3F009BDC17820245003B15B4 /* TableView */,
 				3FFB32CD1781D0F50017B8C0 /* Bookmarkme */,
 				3FFB32C61781D0F50017B8C0 /* Frameworks */,
 				3FFB32C51781D0F50017B8C0 /* Products */,
@@ -87,10 +110,9 @@
 			children = (
 				3FFB32D61781D0F50017B8C0 /* AppDelegate.h */,
 				3FFB32D71781D0F50017B8C0 /* AppDelegate.m */,
-				3FFB32DF1781D0F50017B8C0 /* ViewController.h */,
-				3FFB32E01781D0F50017B8C0 /* ViewController.m */,
-				3FFB32E21781D0F50017B8C0 /* ViewController_iPhone.xib */,
-				3FFB32E51781D0F50017B8C0 /* ViewController_iPad.xib */,
+				3FFB32DF1781D0F50017B8C0 /* BMViewController.h */,
+				3FFB32E01781D0F50017B8C0 /* BMViewController.m */,
+				3FFB32E21781D0F50017B8C0 /* BMViewController_iPhone.xib */,
 				3FFB32CE1781D0F50017B8C0 /* Supporting Files */,
 			);
 			path = Bookmarkme;
@@ -99,8 +121,12 @@
 		3FFB32CE1781D0F50017B8C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3FD37302178314F200692BB4 /* SS57.png */,
+				3FD37300178314E700692BB4 /* SS114.png */,
+				3F97C49A17821AAD00B27269 /* searchsmarter57.png */,
 				3FFB32CF1781D0F50017B8C0 /* Bookmarkme-Info.plist */,
 				3FFB32D01781D0F50017B8C0 /* InfoPlist.strings */,
+				3F97C49C17821AC000B27269 /* searchsmarter114.png */,
 				3FFB32D31781D0F50017B8C0 /* main.m */,
 				3FFB32D51781D0F50017B8C0 /* Bookmarkme-Prefix.pch */,
 				3FFB32D91781D0F50017B8C0 /* Default.png */,
@@ -165,8 +191,12 @@
 				3FFB32DA1781D0F50017B8C0 /* Default.png in Resources */,
 				3FFB32DC1781D0F50017B8C0 /* Default@2x.png in Resources */,
 				3FFB32DE1781D0F50017B8C0 /* Default-568h@2x.png in Resources */,
-				3FFB32E41781D0F50017B8C0 /* ViewController_iPhone.xib in Resources */,
-				3FFB32E71781D0F50017B8C0 /* ViewController_iPad.xib in Resources */,
+				3FFB32E41781D0F50017B8C0 /* BMViewController_iPhone.xib in Resources */,
+				3F97C49B17821AAD00B27269 /* searchsmarter57.png in Resources */,
+				3F97C49D17821AC000B27269 /* searchsmarter114.png in Resources */,
+				3F97C4A217821EA000B27269 /* BookmarksViewController.xib in Resources */,
+				3FD37301178314E700692BB4 /* SS114.png in Resources */,
+				3FD37303178314F200692BB4 /* SS57.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +209,8 @@
 			files = (
 				3FFB32D41781D0F50017B8C0 /* main.m in Sources */,
 				3FFB32D81781D0F50017B8C0 /* AppDelegate.m in Sources */,
-				3FFB32E11781D0F50017B8C0 /* ViewController.m in Sources */,
+				3FFB32E11781D0F50017B8C0 /* BMViewController.m in Sources */,
+				3F97C4A117821EA000B27269 /* BookmarksViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,20 +225,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		3FFB32E21781D0F50017B8C0 /* ViewController_iPhone.xib */ = {
+		3FFB32E21781D0F50017B8C0 /* BMViewController_iPhone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3FFB32E31781D0F50017B8C0 /* en */,
 			);
-			name = ViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		3FFB32E51781D0F50017B8C0 /* ViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3FFB32E61781D0F50017B8C0 /* en */,
-			);
-			name = ViewController_iPad.xib;
+			name = BMViewController_iPhone.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -312,6 +335,7 @@
 				3FFB32EC1781D0F50017B8C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

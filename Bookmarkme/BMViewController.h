@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface BMViewController : UIViewController <UIWebViewDelegate>
+
+@property(nonatomic, strong) IBOutlet UIWebView *webView;
+@property(nonatomic,strong) IBOutlet UITextField *addressBar;
+@property (strong, nonatomic) UIViewController* optionsViewController;
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+-(IBAction)goAddress:(id)sender;
 
 @end
