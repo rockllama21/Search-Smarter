@@ -17,7 +17,7 @@
 
 @synthesize webView, addressBar, optionsViewController;
 
-- (void)viewDidLoad
+- (void)viewDidLoade
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -42,18 +42,14 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationItem setTitle:@"Search Smarter"];
+    [self.navigationItem setTitle:@"Search Smarter"]; 
     [self.navigationController.navigationBar setBarStyle: UIBarStyleBlack];
     [self.view setBackgroundColor:[UIColor darkGrayColor]];
-    UIBarButtonItem *optionsButton =
-    [[UIBarButtonItem alloc]
-     initWithTitle:@"Bookmarks"
-     style: UIBarButtonItemStylePlain
-     target:self action:@selector(switchToBookmarksListView:)];
-    self.navigationItem.rightBarButtonItem = optionsButton;
+    UIBarButtonItem *bookmarksButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(switchToBookmarksListView:)];
+    self.navigationItem.rightBarButtonItem = bookmarksButton;
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:.094 green:.176 blue:.874 alpha:1]];
 }
--(IBAction)switchToBookmarksListView:(id)sender
+-(void)switchToBookmarksListView:(id)sender
 {
     self.optionsViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -80,6 +76,17 @@
     [addressBar resignFirstResponder];
 }
 
+- (IBAction)addBookmark:(id)sender {
+    UIAlertView *alert =[[UIAlertView alloc]initWithTitle: @"Great!" message:@"Are you sure you want to save this web page to your Bookmarks?"delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [alert show];
+}
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1) {
+        NSDictionary* dictionaryEntry = [NSDictionary dictionaryWithObject:[addressBar text] forKey:[addressBar text]];
+        [self persist:dictionaryEntry];
+    }
+}
+
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     if (navigationType == UIWebViewNavigationTypeLinkClicked){
         NSURL *url =[request URL];
@@ -97,6 +104,8 @@
     NSString *documentsDir = [documentPaths objectAtIndex:0];
     NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"data"]];
     NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    
+    
     
     NSError *error;
     
@@ -118,7 +127,7 @@
     NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"data"]];
     NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:path];
     //build an info object and convert to json
-    
+    [fileHandler readDataToEndOfFile];
     //convert object to data
     NSError* error;
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info
