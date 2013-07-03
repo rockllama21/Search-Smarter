@@ -77,9 +77,26 @@
 }
 
 - (IBAction)addBookmark:(id)sender {
-    UIAlertView *alert =[[UIAlertView alloc]initWithTitle: @"Great!" message:@"Are you sure you want to save this web page to your Bookmarks?"delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-    [alert show];
+//    UIAlertView *alert =[[UIAlertView alloc]initWithTitle: @"Great!" message:@"Are you sure you want to save this web page to your Bookmarks?"delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+//    [alert show];
+    NSArray* bookmarkStore = [self populate];
+    //step 1: lets get the URL
+    NSString* address = [addressBar text];
+    NSDictionary* newEntry = @{address: address};
+    NSMutableDictionary* newDic = [[NSMutableDictionary alloc] init];
+    int indexKey = 0;
+    if(bookmarkStore != nil){
+        for(NSDictionary* dicEntry in bookmarkStore){
+            NSString* key = [NSString stringWithFormat:@"%@", [NSNumber numberWithUnsignedInt:indexKey++]];
+            [newDic setObject:dicEntry forKey:key];
+        }
+    }
+    NSString* key = [NSString stringWithFormat:@"%@", [NSNumber numberWithUnsignedInt:indexKey++]];
+    [newDic setObject:newEntry forKey:key];
+    [self persist:newDic];
+    NSLog(@"%@", newDic);
 }
+
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     if (buttonIndex==1) {
         NSDictionary* dictionaryEntry = [NSDictionary dictionaryWithObject:[addressBar text] forKey:[addressBar text]];
@@ -105,16 +122,16 @@
     NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"data"]];
     NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:path];
     
-    
-    
     NSError *error;
     
     NSData *data = [NSData dataWithContentsOfFile:path];
-    
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
-    [fileHandler closeFile];
-    
-    return jsonArray;
+    if(data != nil){
+        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+        [fileHandler closeFile];
+        
+        return jsonArray;
+    }else
+        return nil;
 }
 
 /*
