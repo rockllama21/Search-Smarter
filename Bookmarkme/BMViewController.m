@@ -15,13 +15,13 @@
 
 @implementation BMViewController
 
-@synthesize webView, addressBar, optionsViewController;
+@synthesize webView, addressBar, bookmarksViewController;
 
-- (void)viewDidLoade
+- (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    NSString *address =@"http://www.google.com";
+    NSString *address =@"www.google.com";
     NSURL *url = [NSURL URLWithString:address];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -51,10 +51,11 @@
 }
 -(void)switchToBookmarksListView:(id)sender
 {
-    self.optionsViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.bookmarksViewController = [[BookmarksViewController alloc] initWithNibName:@"BookmarksViewController" bundle:nil];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.optionsViewController.title=@"Bookmarks";
-    [self.navigationController pushViewController:self.optionsViewController animated:YES];
+    self.bookmarksViewController.title=@"Bookmarks";
+    [self.navigationController pushViewController:self.bookmarksViewController animated:YES];
+    [self.bookmarksViewController view];
 }
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -70,7 +71,8 @@
 }
 
 -(IBAction)goAddress:(id)sender{
-    NSURL *url =[NSURL URLWithString:[addressBar text]];
+    NSString* http = [NSString stringWithFormat:@"%@", [addressBar text]];
+    NSURL *url =[NSURL URLWithString:http];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
     [addressBar resignFirstResponder];
@@ -79,22 +81,17 @@
 - (IBAction)addBookmark:(id)sender {
 //    UIAlertView *alert =[[UIAlertView alloc]initWithTitle: @"Great!" message:@"Are you sure you want to save this web page to your Bookmarks?"delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
 //    [alert show];
-    NSArray* bookmarkStore = [self populate];
-    //step 1: lets get the URL
     NSString* address = [addressBar text];
-    NSDictionary* newEntry = @{address: address};
-    NSMutableDictionary* newDic = [[NSMutableDictionary alloc] init];
-    int indexKey = 0;
-    if(bookmarkStore != nil){
-        for(NSDictionary* dicEntry in bookmarkStore){
-            NSString* key = [NSString stringWithFormat:@"%@", [NSNumber numberWithUnsignedInt:indexKey++]];
-            [newDic setObject:dicEntry forKey:key];
-        }
+    NSDictionary* persistedData = [self populate];
+    if(persistedData == nil){
+        persistedData = @{address: address};
+        [self persist:persistedData];
+    }else{
+        NSMutableDictionary* appenedData = [[NSMutableDictionary alloc] initWithDictionary:persistedData];
+        [appenedData setObject:address forKey:address];
+        [self persist:appenedData];
     }
-    NSString* key = [NSString stringWithFormat:@"%@", [NSNumber numberWithUnsignedInt:indexKey++]];
-    [newDic setObject:newEntry forKey:key];
-    [self persist:newDic];
-    NSLog(@"%@", newDic);
+    NSLog(@"%@", [self populate]);
 }
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
@@ -115,7 +112,8 @@
     }
     return YES;
 }
--(NSArray*)populate
+
+-(NSDictionary*)populate
 {
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDir = [documentPaths objectAtIndex:0];
@@ -126,10 +124,10 @@
     
     NSData *data = [NSData dataWithContentsOfFile:path];
     if(data != nil){
-        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+        NSDictionary *jsonDir = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
         [fileHandler closeFile];
         
-        return jsonArray;
+        return jsonDir;
     }else
         return nil;
 }
