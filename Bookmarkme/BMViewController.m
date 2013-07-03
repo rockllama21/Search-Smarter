@@ -20,7 +20,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    NSString* url = @"www.google.com";
+    [addressBar setText:url];
+    [self goAddress];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadBookmark:) name:@"loadBookmark" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -28,12 +32,9 @@
     [self.navigationItem setTitle:@"Search Smarter"]; 
     [self.navigationController.navigationBar setBarStyle: UIBarStyleBlack];
     [self.view setBackgroundColor:[UIColor darkGrayColor]];
-    UIBarButtonItem *bookmarksButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(switchToBookmarksListView:)];
-    self.navigationItem.rightBarButtonItem = bookmarksButton;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(switchToBookmarksListView:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBookmark:)];
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:.094 green:.176 blue:.874 alpha:1]];
-    NSString* url = @"www.google.com";
-    [addressBar setText:url];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 -(void)switchToBookmarksListView:(id)sender
@@ -96,7 +97,7 @@
     [addressBar resignFirstResponder];
 }
 
-- (IBAction)addBookmark:(id)sender {
+- (void)addBookmark:(id)sender {
 
     NSString* address = [addressBar text];
     //check for http://
@@ -124,6 +125,12 @@
         return NO;
     }
     return YES;
+}
+
+-(void)loadBookmark:(NSNotification *)notification {
+    NSString *bookmark = [[notification userInfo] objectForKey:@"bookmark"];
+    self.addressBar.text = bookmark;
+    [self goAddress];
 }
 
 -(NSDictionary*)populate

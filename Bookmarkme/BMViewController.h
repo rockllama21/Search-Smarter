@@ -20,7 +20,6 @@
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
 -(IBAction)goAddress;
 -(void)goAddress:(NSString*) newURL;
-- (IBAction)addBookmark:(id)sender;
 -(NSDictionary*)populate;
 -(BOOL)persist:(NSDictionary*)info;
 

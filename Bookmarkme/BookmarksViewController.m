@@ -115,9 +115,9 @@
 //this method fires when you tap a row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString* selectedBookmark = [self.bookmarks objectAtIndex: indexPath.row];
+    NSString* selectedBookmark = [self.bookmarks objectAtIndex:indexPath.row];
     [self.navigationController popToRootViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SendBookmark" object:self userInfo:[NSDictionary dictionaryWithObject:selectedBookmark forKey:@"bookmark"]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"loadBookmark" object:self userInfo:[NSDictionary dictionaryWithObject:selectedBookmark forKey:@"bookmark"]];
 //    BMViewController* root = [self.navigationController.viewControllers objectAtIndex:0];
 //    [root goAddress:selectedBookmark];
 //    NSArray* viewControllers = self.navigationController.viewControllers;
