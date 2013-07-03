@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
     self.bookmarks = [[self populate] allValues];
-    NSLog(@"%@", self.bookmarks);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendBookmark) name:@"SendBookmark" object:nil];
 }
 
 -(NSDictionary*)populate
@@ -115,13 +115,32 @@
 //this method fires when you tap a row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString* selectedBookmark = [self.bookmarks objectAtIndex: indexPath.row];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SendBookmark" object:self userInfo:[NSDictionary dictionaryWithObject:selectedBookmark forKey:@"bookmark"]];
+//    BMViewController* root = [self.navigationController.viewControllers objectAtIndex:0];
+//    [root goAddress:selectedBookmark];
+//    NSArray* viewControllers = self.navigationController.viewControllers;
+//    
+//    [root.addressBar setText:selectedBookmark];
+//    [root goAddress];
+    
+
+        
+    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+-(void)sendBookmark
+{
+    
 }
 
 @end

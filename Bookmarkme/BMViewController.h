@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "BookmarksViewController.h"
+#import "AppDelegate.h"
 
-@interface BMViewController : UIViewController <UIWebViewDelegate>
+@interface BMViewController : UIViewController <UIWebViewDelegate, UITextFieldDelegate>
 
 @property(nonatomic, strong) IBOutlet UIWebView *webView;
 @property(nonatomic,strong) IBOutlet UITextField *addressBar;
-@property (strong, nonatomic) BookmarksViewController* bookmarksViewController;
+
+@property (nonatomic, strong) BookmarksViewController* bookmarksViewController;
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
--(IBAction)goAddress:(id)sender;
+-(IBAction)goAddress;
+-(void)goAddress:(NSString*) newURL;
 - (IBAction)addBookmark:(id)sender;
 -(NSDictionary*)populate;
 -(BOOL)persist:(NSDictionary*)info;

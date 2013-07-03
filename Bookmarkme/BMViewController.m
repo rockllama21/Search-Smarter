@@ -21,25 +21,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    NSString *address =@"http://www.google.com";
-    NSURL *url = [NSURL URLWithString:address];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    [webView loadRequest:request];
-    [addressBar setText:address];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        //here's a directory of JSON we got from the URL above
-        NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [JSON valueForKeyPath:@"origin"],
-                              @"where", nil];
-        [self persist:info];
-        NSLog(@"%@", [self populate]);
-    } failure:nil];
-    
-    [operation start];
-
-    
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationItem setTitle:@"Search Smarter"]; 
@@ -48,7 +31,11 @@
     UIBarButtonItem *bookmarksButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(switchToBookmarksListView:)];
     self.navigationItem.rightBarButtonItem = bookmarksButton;
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:.094 green:.176 blue:.874 alpha:1]];
+    NSString* url = @"www.google.com";
+    [addressBar setText:url];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
+
 -(void)switchToBookmarksListView:(id)sender
 {
     self.bookmarksViewController = [[BookmarksViewController alloc] initWithNibName:@"BookmarksViewController" bundle:nil];
@@ -70,7 +57,30 @@
     NSLog(@"touch moved: %f %f", touchPoint.x, touchPoint.y);
 }
 
--(IBAction)goAddress:(id)sender{
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self goAddress];
+    [textField resignFirstResponder];
+    return NO;
+}
+
+-(void)goAddress:(NSString*) newURL{
+    NSString* http = [NSString stringWithFormat:@"%@", newURL];
+    NSURL *url;
+    if([http rangeOfString:@"http://"].location == NSNotFound ||
+       [http rangeOfString:@"https://"].location == NSNotFound){
+        //prepend http
+        NSString* httpURL = [NSString stringWithFormat:@"http://%@", http];
+        http = httpURL;
+        NSLog(@"%@", http);
+    }
+    url =[NSURL URLWithString:http];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:request];
+    [addressBar resignFirstResponder];
+}
+
+-(IBAction)goAddress{
+    [self.addressBar resignFirstResponder];
     NSString* http = [NSString stringWithFormat:@"%@", [addressBar text]];
     NSURL *url;
     if([http rangeOfString:@"http://"].location == NSNotFound ||
@@ -87,8 +97,7 @@
 }
 
 - (IBAction)addBookmark:(id)sender {
-//    UIAlertView *alert =[[UIAlertView alloc]initWithTitle: @"Great!" message:@"Are you sure you want to save this web page to your Bookmarks?"delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-//    [alert show];
+
     NSString* address = [addressBar text];
     //check for http://
     
@@ -102,20 +111,16 @@
         [self persist:appenedData];
     }
     NSLog(@"%@", [self populate]);
-}
 
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==1) {
-        NSDictionary* dictionaryEntry = [NSDictionary dictionaryWithObject:[addressBar text] forKey:[addressBar text]];
-        [self persist:dictionaryEntry];
-    }
+    UIAlertView *alert =[[UIAlertView alloc]initWithTitle: @"Added to bookmarks" message:@"This page has been added to your bookmarks." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     if (navigationType == UIWebViewNavigationTypeLinkClicked){
         NSURL *url =[request URL];
         [addressBar setText:[url absoluteString]];
-        [self goAddress:nil];
+        [self goAddress];
         return NO;
     }
     return YES;
