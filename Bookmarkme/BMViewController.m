@@ -21,7 +21,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    NSString *address =@"www.google.com";
+    NSString *address =@"http://www.google.com";
     NSURL *url = [NSURL URLWithString:address];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -55,7 +55,7 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.bookmarksViewController.title=@"Bookmarks";
     [self.navigationController pushViewController:self.bookmarksViewController animated:YES];
-    [self.bookmarksViewController view];
+//    [self.bookmarksViewController view];
 }
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -72,7 +72,15 @@
 
 -(IBAction)goAddress:(id)sender{
     NSString* http = [NSString stringWithFormat:@"%@", [addressBar text]];
-    NSURL *url =[NSURL URLWithString:http];
+    NSURL *url;
+    if([http rangeOfString:@"http://"].location == NSNotFound ||
+       [http rangeOfString:@"https://"].location == NSNotFound){
+        //prepend http
+        NSString* httpURL = [NSString stringWithFormat:@"http://%@", http];
+        http = httpURL;
+        NSLog(@"%@", http);
+    }
+    url =[NSURL URLWithString:http];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
     [addressBar resignFirstResponder];
@@ -82,6 +90,8 @@
 //    UIAlertView *alert =[[UIAlertView alloc]initWithTitle: @"Great!" message:@"Are you sure you want to save this web page to your Bookmarks?"delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
 //    [alert show];
     NSString* address = [addressBar text];
+    //check for http://
+    
     NSDictionary* persistedData = [self populate];
     if(persistedData == nil){
         persistedData = @{address: address};
@@ -104,10 +114,8 @@
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     if (navigationType == UIWebViewNavigationTypeLinkClicked){
         NSURL *url =[request URL];
-        if([[url scheme] isEqualToString:@"http"]){
-            [addressBar setText:[url absoluteString]];
-            [self goAddress:nil];
-        }
+        [addressBar setText:[url absoluteString]];
+        [self goAddress:nil];
         return NO;
     }
     return YES;
