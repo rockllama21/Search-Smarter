@@ -19,20 +19,19 @@
     [super viewDidLoad];
     self.bookmarks = [NSMutableArray arrayWithArray:[[self populate] allValues]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendBookmark) name:@"SendBookmark" object:nil];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(setEditMode:)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(setEditMode:)];
 }
 
-- (void)setEditMode:(UIBarButtonItem *)sender {
-    if (self.editing) {
-        sender.title = @"Edit";
-        [super setEditing:NO animated:YES];
-    } else {
-        sender.title = @"Done";
-        [super setEditing:YES animated:YES];
-    }
-    NSLog(@"Editing: %@", self.editing ? @"YES" : @"NO");
-}
-
+//- (void)setEditMode:(UIBarButtonItem *)sender {
+//    if (self.editing) {
+//        sender.title = @"Edit";
+//        [super setEditing:NO animated:YES];
+//    } else {
+//        sender.title = @"Done";
+//        [super setEditing:YES animated:YES];
+//    }
+//    NSLog(@"Editing: %@", self.editing ? @"YES" : @"NO");
+//}
 
 -(NSDictionary*)populate
 {
@@ -51,6 +50,26 @@
         return jsonDir;
     }else
         return nil;
+}
+
+/*
+ This method takes a dictionary of values and writes them to a file as parsable JSON text
+ */
+-(BOOL)persist:(NSDictionary*)info
+{
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    NSString *path = [[NSString alloc] initWithFormat:@"%@",[documentsDir stringByAppendingPathComponent:@"data"]];
+    NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    //build an info object and convert to json
+    [fileHandler readDataToEndOfFile];
+    //convert object to data
+    NSError* error;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:info
+                                                       options:NSJSONWritingPrettyPrinted error:&error];
+    [jsonData writeToFile:path options:NSDataWritingAtomic error:&error];
+    [fileHandler closeFile];
+    return true;
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,7 +106,13 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString* markedForRemoval = [self.bookmarks objectAtIndex:indexPath.row];
     [self.bookmarks removeObjectAtIndex:indexPath.row];
+    
+    //remove from datastore
+    NSMutableDictionary* fromStore = [[NSMutableDictionary alloc] initWithDictionary:[self populate]];
+    [fromStore removeObjectForKey:markedForRemoval];
+    [self persist:fromStore];
     [tableView reloadData];
 }
 
