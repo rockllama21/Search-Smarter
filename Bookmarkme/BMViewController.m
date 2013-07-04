@@ -27,6 +27,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadBookmark:) name:@"loadBookmark" object:nil];
 }
 
+//nav bar and buttons
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationItem setTitle:@"Search Smarter"]; 
@@ -36,7 +37,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBookmark:)];
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:.094 green:.176 blue:.874 alpha:1]];
 }
-
+//switches to bookmarks
 -(void)switchToBookmarksListView:(id)sender
 {
     self.bookmarksViewController = [[BookmarksViewController alloc] initWithNibName:@"BookmarksViewController" bundle:nil];
@@ -63,7 +64,7 @@
     [textField resignFirstResponder];
     return NO;
 }
-
+//method to go to the website
 -(void)goAddress:(NSString*) newURL{
     NSString* http = [NSString stringWithFormat:@"%@", newURL];
     NSURL *url;
@@ -79,7 +80,7 @@
     [webView loadRequest:request];
     [addressBar resignFirstResponder];
 }
-
+//make it the text field go to the web
 -(IBAction)goAddress{
     [self.addressBar resignFirstResponder];
     NSString* http = [NSString stringWithFormat:@"%@", [addressBar text]];
@@ -96,7 +97,7 @@
     [webView loadRequest:request];
     [addressBar resignFirstResponder];
 }
-
+//adds bookmark
 - (void)addBookmark:(id)sender {
 
     NSString* address = [addressBar text];
@@ -116,7 +117,7 @@
     UIAlertView *alert =[[UIAlertView alloc]initWithTitle: @"Added to bookmarks" message:@"This page has been added to your bookmarks." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
 }
-
+//displays the UIWebView
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     if (navigationType == UIWebViewNavigationTypeLinkClicked){
         NSURL *url =[request URL];
@@ -126,7 +127,7 @@
     }
     return YES;
 }
-
+//loads bookmarks when clicked
 -(void)loadBookmark:(NSNotification *)notification {
     NSString *bookmark = [[notification userInfo] objectForKey:@"bookmark"];
     self.addressBar.text = bookmark;

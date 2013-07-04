@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F095BBD1785C7F80080A45A /* rockllama.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F095BBC1785C7F80080A45A /* rockllama.png */; };
+		3F095BBF1785C80F0080A45A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F095BBE1785C80F0080A45A /* Default-568h@2x.png */; };
+		3F095BC11785C8160080A45A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F095BC01785C8160080A45A /* Default@2x.png */; };
 		3FD37301178314E700692BB4 /* SS114.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD37300178314E700692BB4 /* SS114.png */; };
 		3FD37303178314F200692BB4 /* SS57.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD37302178314F200692BB4 /* SS57.png */; };
 		3FFB32C81781D0F50017B8C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFB32C71781D0F50017B8C0 /* UIKit.framework */; };
@@ -34,16 +37,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F095BBC1785C7F80080A45A /* rockllama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rockllama.png; path = ../../../Desktop/rockllama.png; sourceTree = "<group>"; };
+		3F095BBE1785C80F0080A45A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3F095BC01785C8160080A45A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3FD37300178314E700692BB4 /* SS114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SS114.png; path = ../SS114.png; sourceTree = "<group>"; };
 		3FD37302178314F200692BB4 /* SS57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SS57.png; path = ../SS57.png; sourceTree = "<group>"; };
-		3FFB32C41781D0F50017B8C0 /* Bookmarkme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookmarkme.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FFB32C41781D0F50017B8C0 /* Search Smarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Search Smarter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FFB32C71781D0F50017B8C0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3FFB32C91781D0F50017B8C0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3FFB32CB1781D0F50017B8C0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3FFB32CF1781D0F50017B8C0 /* Bookmarkme-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bookmarkme-Info.plist"; sourceTree = "<group>"; };
+		3FFB32CF1781D0F50017B8C0 /* Search Smarter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Search Smarter-Info.plist"; sourceTree = "<group>"; };
 		3FFB32D11781D0F50017B8C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3FFB32D31781D0F50017B8C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3FFB32D51781D0F50017B8C0 /* Bookmarkme-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bookmarkme-Prefix.pch"; sourceTree = "<group>"; };
+		3FFB32D51781D0F50017B8C0 /* Search Smarter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Search Smarter-Prefix.pch"; sourceTree = "<group>"; };
 		3FFB32D61781D0F50017B8C0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3FFB32D71781D0F50017B8C0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3FFB32D91781D0F50017B8C0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -104,6 +110,8 @@
 		3FFB32BB1781D0F50017B8C0 = {
 			isa = PBXGroup;
 			children = (
+				3F095BC01785C8160080A45A /* Default@2x.png */,
+				3F095BBE1785C80F0080A45A /* Default-568h@2x.png */,
 				CAF041711783AC6E007E79E5 /* AFNetworking */,
 				3F009BDC17820245003B15B4 /* TableView */,
 				3FFB32CD1781D0F50017B8C0 /* Bookmarkme */,
@@ -115,7 +123,7 @@
 		3FFB32C51781D0F50017B8C0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3FFB32C41781D0F50017B8C0 /* Bookmarkme.app */,
+				3FFB32C41781D0F50017B8C0 /* Search Smarter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,10 +156,11 @@
 			children = (
 				3FD37302178314F200692BB4 /* SS57.png */,
 				3FD37300178314E700692BB4 /* SS114.png */,
-				3FFB32CF1781D0F50017B8C0 /* Bookmarkme-Info.plist */,
+				3FFB32CF1781D0F50017B8C0 /* Search Smarter-Info.plist */,
 				3FFB32D01781D0F50017B8C0 /* InfoPlist.strings */,
 				3FFB32D31781D0F50017B8C0 /* main.m */,
-				3FFB32D51781D0F50017B8C0 /* Bookmarkme-Prefix.pch */,
+				3F095BBC1785C7F80080A45A /* rockllama.png */,
+				3FFB32D51781D0F50017B8C0 /* Search Smarter-Prefix.pch */,
 				3FFB32D91781D0F50017B8C0 /* Default.png */,
 				3FFB32DB1781D0F50017B8C0 /* Default@2x.png */,
 				3FFB32DD1781D0F50017B8C0 /* Default-568h@2x.png */,
@@ -188,9 +197,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3FFB32C31781D0F50017B8C0 /* Bookmarkme */ = {
+		3FFB32C31781D0F50017B8C0 /* Search Smarter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FFB32EA1781D0F50017B8C0 /* Build configuration list for PBXNativeTarget "Bookmarkme" */;
+			buildConfigurationList = 3FFB32EA1781D0F50017B8C0 /* Build configuration list for PBXNativeTarget "Search Smarter" */;
 			buildPhases = (
 				3FFB32C01781D0F50017B8C0 /* Sources */,
 				3FFB32C11781D0F50017B8C0 /* Frameworks */,
@@ -200,9 +209,9 @@
 			);
 			dependencies = (
 			);
-			name = Bookmarkme;
+			name = "Search Smarter";
 			productName = Bookmarkme;
-			productReference = 3FFB32C41781D0F50017B8C0 /* Bookmarkme.app */;
+			productReference = 3FFB32C41781D0F50017B8C0 /* Search Smarter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -214,7 +223,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Tyler Maher";
 			};
-			buildConfigurationList = 3FFB32BF1781D0F50017B8C0 /* Build configuration list for PBXProject "Bookmarkme" */;
+			buildConfigurationList = 3FFB32BF1781D0F50017B8C0 /* Build configuration list for PBXProject "Search Smarter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -226,7 +235,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3FFB32C31781D0F50017B8C0 /* Bookmarkme */,
+				3FFB32C31781D0F50017B8C0 /* Search Smarter */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +253,9 @@
 				3FD37301178314E700692BB4 /* SS114.png in Resources */,
 				3FD37303178314F200692BB4 /* SS57.png in Resources */,
 				CAF041921783B91D007E79E5 /* BookmarksViewController.xib in Resources */,
+				3F095BBD1785C7F80080A45A /* rockllama.png in Resources */,
+				3F095BBF1785C80F0080A45A /* Default-568h@2x.png in Resources */,
+				3F095BC11785C8160080A45A /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,9 +366,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bookmarkme/Bookmarkme-Prefix.pch";
-				INFOPLIST_FILE = "Bookmarkme/Bookmarkme-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Bookmarkme/Search Smarter-Prefix.pch";
+				INFOPLIST_FILE = "Bookmarkme/Search Smarter-Info.plist";
+				PRODUCT_NAME = "Search Smarter";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -365,9 +377,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bookmarkme/Bookmarkme-Prefix.pch";
-				INFOPLIST_FILE = "Bookmarkme/Bookmarkme-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Bookmarkme/Search Smarter-Prefix.pch";
+				INFOPLIST_FILE = "Bookmarkme/Search Smarter-Info.plist";
+				PRODUCT_NAME = "Search Smarter";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -375,7 +387,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3FFB32BF1781D0F50017B8C0 /* Build configuration list for PBXProject "Bookmarkme" */ = {
+		3FFB32BF1781D0F50017B8C0 /* Build configuration list for PBXProject "Search Smarter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FFB32E81781D0F50017B8C0 /* Debug */,
@@ -384,7 +396,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FFB32EA1781D0F50017B8C0 /* Build configuration list for PBXNativeTarget "Bookmarkme" */ = {
+		3FFB32EA1781D0F50017B8C0 /* Build configuration list for PBXNativeTarget "Search Smarter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FFB32EB1781D0F50017B8C0 /* Debug */,

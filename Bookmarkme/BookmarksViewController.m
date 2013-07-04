@@ -17,9 +17,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.bookmarks = [[self populate] allValues];
+    self.bookmarks = [NSMutableArray arrayWithArray:[[self populate] allValues]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendBookmark) name:@"SendBookmark" object:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(setEditMode:)];
 }
+
+- (void)setEditMode:(UIBarButtonItem *)sender {
+    if (self.editing) {
+        sender.title = @"Edit";
+        [super setEditing:NO animated:YES];
+    } else {
+        sender.title = @"Done";
+        [super setEditing:YES animated:YES];
+    }
+    NSLog(@"Editing: %@", self.editing ? @"YES" : @"NO");
+}
+
 
 -(NSDictionary*)populate
 {
@@ -54,13 +67,13 @@
     // Return the number of sections.
     return 1;
 }
+//sets up table
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%d", [self.bookmarks count]);
     return [self.bookmarks count];
 }
 
-
+//make cells
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *MyIdentifier = @"MyIdentifier";
@@ -72,6 +85,12 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.bookmarks removeObjectAtIndex:indexPath.row];
+    [tableView reloadData];
+}
+
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,8 +98,8 @@
  // Return NO if you do not want the specified item to be editable.
  return YES;
  }
- */
-
+*/
+ 
 /*
  // Override to support editing the table view.
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

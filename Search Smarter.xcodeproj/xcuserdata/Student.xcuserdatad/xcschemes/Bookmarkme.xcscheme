@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3FFB32C31781D0F50017B8C0"
-               BuildableName = "Bookmarkme.app"
-               BlueprintName = "Bookmarkme"
-               ReferencedContainer = "container:Bookmarkme.xcodeproj">
+               BuildableName = "Search Smarter.app"
+               BlueprintName = "Search Smarter"
+               ReferencedContainer = "container:Search Smarter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FFB32C31781D0F50017B8C0"
-            BuildableName = "Bookmarkme.app"
-            BlueprintName = "Bookmarkme"
-            ReferencedContainer = "container:Bookmarkme.xcodeproj">
+            BuildableName = "Search Smarter.app"
+            BlueprintName = "Search Smarter"
+            ReferencedContainer = "container:Search Smarter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FFB32C31781D0F50017B8C0"
-            BuildableName = "Bookmarkme.app"
-            BlueprintName = "Bookmarkme"
-            ReferencedContainer = "container:Bookmarkme.xcodeproj">
+            BuildableName = "Search Smarter.app"
+            BlueprintName = "Search Smarter"
+            ReferencedContainer = "container:Search Smarter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3FFB32C31781D0F50017B8C0"
-            BuildableName = "Bookmarkme.app"
-            BlueprintName = "Bookmarkme"
-            ReferencedContainer = "container:Bookmarkme.xcodeproj">
+            BuildableName = "Search Smarter.app"
+            BlueprintName = "Search Smarter"
+            ReferencedContainer = "container:Search Smarter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

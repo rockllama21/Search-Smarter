@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Bookmarkme.xcodeproj">
+      location = "self:Search Smarter.xcodeproj">
    </FileRef>
 </Workspace>
