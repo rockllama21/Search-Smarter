@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F095BBD1785C7F80080A45A /* rockllama.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F095BBC1785C7F80080A45A /* rockllama.png */; };
 		3F095BBF1785C80F0080A45A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F095BBE1785C80F0080A45A /* Default-568h@2x.png */; };
 		3F095BC11785C8160080A45A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F095BC01785C8160080A45A /* Default@2x.png */; };
+		3F095BC31785F46D0080A45A /* rockllama.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F095BC21785F46D0080A45A /* rockllama.png */; };
 		3FD37301178314E700692BB4 /* SS114.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD37300178314E700692BB4 /* SS114.png */; };
 		3FD37303178314F200692BB4 /* SS57.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD37302178314F200692BB4 /* SS57.png */; };
 		3FFB32C81781D0F50017B8C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFB32C71781D0F50017B8C0 /* UIKit.framework */; };
@@ -37,9 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F095BBC1785C7F80080A45A /* rockllama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rockllama.png; path = ../../../Desktop/rockllama.png; sourceTree = "<group>"; };
 		3F095BBE1785C80F0080A45A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3F095BC01785C8160080A45A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		3F095BC21785F46D0080A45A /* rockllama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockllama.png; sourceTree = "<group>"; };
 		3FD37300178314E700692BB4 /* SS114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SS114.png; path = ../SS114.png; sourceTree = "<group>"; };
 		3FD37302178314F200692BB4 /* SS57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SS57.png; path = ../SS57.png; sourceTree = "<group>"; };
 		3FFB32C41781D0F50017B8C0 /* Search Smarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Search Smarter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,13 +154,13 @@
 		3FFB32CE1781D0F50017B8C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3F095BC21785F46D0080A45A /* rockllama.png */,
 				3FD37302178314F200692BB4 /* SS57.png */,
 				3FD37300178314E700692BB4 /* SS114.png */,
 				3FFB32CF1781D0F50017B8C0 /* Search Smarter-Info.plist */,
 				3FFB32D01781D0F50017B8C0 /* InfoPlist.strings */,
 				3FFB32D31781D0F50017B8C0 /* main.m */,
 				3FFB32D51781D0F50017B8C0 /* Search Smarter-Prefix.pch */,
-				3F095BBC1785C7F80080A45A /* rockllama.png */,
 				3FFB32D91781D0F50017B8C0 /* Default.png */,
 				3FFB32DB1781D0F50017B8C0 /* Default@2x.png */,
 				3FFB32DD1781D0F50017B8C0 /* Default-568h@2x.png */,
@@ -253,9 +253,9 @@
 				3FD37301178314E700692BB4 /* SS114.png in Resources */,
 				3FD37303178314F200692BB4 /* SS57.png in Resources */,
 				CAF041921783B91D007E79E5 /* BookmarksViewController.xib in Resources */,
-				3F095BBD1785C7F80080A45A /* rockllama.png in Resources */,
 				3F095BBF1785C80F0080A45A /* Default-568h@2x.png in Resources */,
 				3F095BC11785C8160080A45A /* Default@2x.png in Resources */,
+				3F095BC31785F46D0080A45A /* rockllama.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
